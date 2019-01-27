@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Connect  Four</title>
+
+    <style type="text/css">
+table{
+  position: relative;
+  top: 20px;
+  left: 195px;
+}
+.dot {
+  height: 100px;
+  width: 100px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+</style>
+  </head>
+
+  <body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+ <div class="container">
+    <table width="600" height="600">
+ <tr>
+   <td id="a" class="1"><span class="dot"></span></td>
+   <td id="b" class="2"><span class="dot"></span></td>
+   <td id="c" class="3"><span class="dot"></span></td>
+   <td id="d" class="4"><span class="dot"></span></td>
+   <td id="e" class="5"><span class="dot"></span></td>
+   <td id="f" class="6"><span class="dot"></span></td>
+ </tr>
+ <tr>
+   <td class="7"><span class="dot"></span></td>
+   <td class="8"><span class="dot"></span></td>
+   <td class="9"><span class="dot"></span></td>
+   <td class="10"><span class="dot"></span></td>
+   <td class="11"><span class="dot"></span></td>
+   <td class="12"><span class="dot"></span></td>
+ </tr>
+ <tr>
+   <td class="13"><span class="dot"></span></td>
+   <td class="14"><span class="dot"></span></td>
+   <td class="15"><span class="dot"></span></td>
+   <td class="16"><span class="dot"></span></td>
+   <td class="17"><span class="dot"></span></td>
+   <td class="18"><span class="dot"></span></td>
+ </tr>
+ <tr>
+   <td class="19"><span class="dot"></span></td>
+   <td class="20"><span class="dot"></span></td>
+   <td class="21"><span class="dot"></span></td>
+   <td class="22"><span class="dot"></span></td>
+   <td class="23" ><span class="dot"></span></td>
+   <td class="24"><span class="dot"></span></td>
+ </tr>
+  </table>
+</div>
+
+  <script>
+  function RedWinner(){
+    if( ($('.1').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.2').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.3').children('.dot').css('background-color')=="rgb(255, 0, 0)" &&
+                $('.4').children('.dot').css('background-color')=="rgb(255, 0, 0)") ||
+        ($('.2').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.3').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.4').children('.dot').css('background-color')=="rgb(255, 0, 0)" &&
+                $('.5').children('.dot').css('background-color')=="rgb(255, 0, 0)") ||
+        ($('.3').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.4').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.5').children('.dot').css('background-color')=="rgb(255, 0, 0)" &&
+                $('.6').children('.dot').css('background-color')=="rgb(255, 0, 0)") ||
+        ($('.7').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.8').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.9').children('.dot').css('background-color')=="rgb(255, 0, 0)" &&
+                $('.10').children('.dot').css('background-color')=="rgb(255, 0, 0)") ||
+        ($('.8').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.9').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.10').children('.dot').css('background-color')=="rgb(255, 0, 0)" &&
+                $('.11').children('.dot').css('background-color')=="rgb(255, 0, 0)") ||
+        ($('.9').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.10').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.11').children('.dot').css('background-color')=="rgb(255, 0, 0)" &&
+                $('.12').children('.dot').css('background-color')=="rgb(255, 0, 0)") ||
+        ($('.13').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.14').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.15').children('.dot').css('background-color')=="rgb(255, 0, 0)" &&
+                $('.16').children('.dot').css('background-color')=="rgb(255, 0, 0)") ||
+        ($('.14').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.15').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.16').children('.dot').css('background-color')=="rgb(255, 0, 0)" &&
+                $('.17').children('.dot').css('background-color')=="rgb(255, 0, 0)") ||
+        ($('.15').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.16').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.17').children('.dot').css('background-color')=="rgb(255, 0, 0)" &&
+                $('.18').children('.dot').css('background-color')=="rgb(255, 0, 0)") ||
+        ($('.19').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.20').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.21').children('.dot').css('background-color')=="rgb(255, 0, 0)" &&
+                $('.22').children('.dot').css('background-color')=="rgb(255, 0, 0)") ||
+        ($('.20').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.21').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.22').children('.dot').css('background-color')=="rgb(255, 0, 0)" &&
+                $('.23').children('.dot').css('background-color')=="rgb(255, 0, 0)") ||
+        ($('.21').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.22').children('.dot').css('background-color')=="rgb(255, 0, 0)" && $('.23').children('.dot').css('background-color')=="rgb(255, 0, 0)" &&
+                $('.24').children('.dot').css('background-color')=="rgb(255, 0, 0)")
+    )
+    alert('Red Wins the Game');
+  }
+
+
+  function BlueWinner(){
+    if( ($('.1').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.2').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.3').children('.dot').css('background-color')=="rgb(0, 0, 255)" &&
+                $('.4').children('.dot').css('background-color')=="rgb(0, 0, 255)") ||
+        ($('.2').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.3').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.4').children('.dot').css('background-color')=="rgb(0, 0, 255)" &&
+                $('.5').children('.dot').css('background-color')=="rgb(0, 0, 255)") ||
+        ($('.3').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.4').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.5').children('.dot').css('background-color')=="rgb(0, 0, 255)" &&
+                $('.6').children('.dot').css('background-color')=="rgb(0, 0, 255)") ||
+        ($('.7').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.8').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.9').children('.dot').css('background-color')=="rgb(0, 0, 255)" &&
+                $('.10').children('.dot').css('background-color')=="rgb(0, 0, 255)") ||
+        ($('.8').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.9').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.10').children('.dot').css('background-color')=="rgb(0, 0, 255)" &&
+                $('.11').children('.dot').css('background-color')=="rgb(0, 0, 255)") ||
+        ($('.9').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.10').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.11').children('.dot').css('background-color')=="rgb(0, 0, 255)" &&
+                $('.12').children('.dot').css('background-color')=="rgb(0, 0, 255)") ||
+        ($('.13').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.14').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.15').children('.dot').css('background-color')=="rgb(0, 0, 255)" &&
+                $('.16').children('.dot').css('background-color')=="rgb(0, 0, 255)") ||
+        ($('.14').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.15').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.16').children('.dot').css('background-color')=="rgb(0, 0, 255)" &&
+                $('.17').children('.dot').css('background-color')=="rgb(0, 0, 255)") ||
+        ($('.15').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.16').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.17').children('.dot').css('background-color')=="rgb(0, 0, 255)" &&
+                $('.18').children('.dot').css('background-color')=="rgb(0, 0, 255)") ||
+        ($('.19').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.20').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.21').children('.dot').css('background-color')=="rgb(0, 0, 255)" &&
+                $('.22').children('.dot').css('background-color')=="rgb(0, 0, 255)") ||
+        ($('.20').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.21').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.22').children('.dot').css('background-color')=="rgb(0, 0, 255)" &&
+                $('.23').children('.dot').css('background-color')=="rgb(0, 0, 255)") ||
+        ($('.21').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.22').children('.dot').css('background-color')=="rgb(0, 0, 255)" && $('.23').children('.dot').css('background-color')=="rgb(0, 0, 255)" &&
+                $('.24').children('.dot').css('background-color')=="rgb(0, 0, 255)")
+    )
+    alert('Blue Wins the Game');
+  }
+
+var k=1;
+$('#a').click(function(){//for first column
+  //console.log($('.19').children('.dot').css("background-color"));
+  if($('.19').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.19').children('.dot').css('background-color')!="rgb(255, 0, 0)"){
+  //console.log("19 not red and blue,");
+    if(k%2==1){
+      $('.19').children('.dot').css("background-color","red");
+      k++;
+    }
+    else {
+      $('.19').children('.dot').css("background-color","blue");
+      k++;
+    }
+  }
+
+  else if($('.13').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.13').children('.dot').css("background-color")!="rgb(255, 0, 0)"){
+  //  console.log("13 not red and blue");
+    if(k%2==1){
+      $('.13').children('.dot').css("background-color","red");
+      k++;
+    }
+    else {
+      $('.13').children('.dot').css("background-color","blue");
+      k++;
+    }
+  }
+
+  else if($('.7').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.7').children('.dot').css("background-color")!="rgb(255, 0, 0)"){
+   //console.log("7 not blue nd red");
+    if(k%2==1){
+      $('.7').children('.dot').css("background-color","red");
+      k++;
+    }
+    else {
+      $('.7').children('.dot').css("background-color","blue");
+      k++;
+    }
+  }
+
+   else if($('.1').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.1').children('.dot').css("background-color")!="rgb(255, 0, 0)"){
+    //console.log("1 not blue and red");
+    if(k%2==1){
+      $('.1').children('.dot').css("background-color","red");
+      k++;
+    }
+    else {
+      $('.1').children('.dot').css("background-color","blue");
+      k++;
+    }
+  }
+  RedWinner();
+  BlueWinner();
+})
+
+
+$('#b').click(function(){//for second column
+  //console.log($('.19').children('.dot').css("background-color"));
+  if($('.20').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.20').children('.dot').css('background-color')!="rgb(255, 0, 0)"){
+  //console.log("19 not red and blue,");
+    if(k%2==1){
+      $('.20').children('.dot').css("background-color","red");
+      k++;
+    }
+    else {
+      $('.20').children('.dot').css("background-color","blue");
+      k++;
+    }
+  }
+
+
+  else if($('.14').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.14').children('.dot').css("background-color")!="rgb(255, 0, 0)"){
+  //  console.log("13 not red and blue");
+    if(k%2==1){
+      $('.14').children('.dot').css("background-color","red");
+      k++;
+    }
+    else {
+      $('.14').children('.dot').css("background-color","blue");
+      k++;
+    }
+  }
+
+
+  else if($('.8').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.8').children('.dot').css("background-color")!="rgb(255, 0, 0)"){
+   //console.log("7 not blue nd red");
+    if(k%2==1){
+      $('.8').children('.dot').css("background-color","red");
+      k++;
+    }
+    else {
+      $('.8').children('.dot').css("background-color","blue");
+      k++;
+    }
+  }
+
+
+  else if($('.2').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.2').children('.dot').css("background-color")!="rgb(255, 0, 0)"){
+   //console.log("1 not blue and red");
+   if(k%2==1){
+     $('.2').children('.dot').css("background-color","red");
+     k++;
+   }
+   else {
+     $('.2').children('.dot').css("background-color","blue");
+     k++;
+   }
+ }
+ RedWinner();
+ BlueWinner();
+})
+
+
+$('#c').click(function(){//for third coluns
+  //console.log($('.19').children('.dot').css("background-color"));
+  if($('.21').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.21').children('.dot').css('background-color')!="rgb(255, 0, 0)"){
+  //console.log("19 not red and blue,");
+    if(k%2==1){
+      $('.21').children('.dot').css("background-color","red");
+      k++;
+    }
+    else {
+      $('.21').children('.dot').css("background-color","blue");
+      k++;
+    }
+  }
+
+
+  else if($('.15').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.15').children('.dot').css("background-color")!="rgb(255, 0, 0)"){
+  //  console.log("13 not red and blue");
+    if(k%2==1){
+      $('.15').children('.dot').css("background-color","red");
+      k++;
+    }
+    else {
+      $('.15').children('.dot').css("background-color","blue");
+      k++;
+    }
+  }
+
+
+  else if($('.9').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.9').children('.dot').css("background-color")!="rgb(255, 0, 0)"){
+   //console.log("7 not blue nd red");
+    if(k%2==1){
+      $('.9').children('.dot').css("background-color","red");
+      k++;
+    }
+    else {
+      $('.9').children('.dot').css("background-color","blue");
+      k++;
+    }
+  }
+
+
+  else if($('.3').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.3').children('.dot').css("background-color")!="rgb(255, 0, 0)"){
+   //console.log("1 not blue and red");
+   if(k%2==1){
+     $('.3').children('.dot').css("background-color","red");
+     k++;
+   }
+   else {
+     $('.3').children('.dot').css("background-color","blue");
+     k++;
+   }
+ }
+ RedWinner();
+ BlueWinner();
+})
+
+
+$('#d').click(function(){//for 4th column
+  //console.log($('.19').children('.dot').css("background-color"));
+  if($('.22').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.22').children('.dot').css('background-color')!="rgb(255, 0, 0)"){
+  //console.log("19 not red and blue,");
+    if(k%2==1){
+      $('.22').children('.dot').css("background-color","red");
+      k++;
+    }
+    else {
+      $('.22').children('.dot').css("background-color","blue");
+      k++;
+    }
+  }
+
+
+  else if($('.16').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.16').children('.dot').css("background-color")!="rgb(255, 0, 0)"){
+  //  console.log("13 not red and blue");
+    if(k%2==1){
+      $('.16').children('.dot').css("background-color","red");
+      k++;
+    }
+    else {
+      $('.16').children('.dot').css("background-color","blue");
+      k++;
+    }
+  }
+
+
+  else if($('.10').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.10').children('.dot').css("background-color")!="rgb(255, 0, 0)"){
+   //console.log("7 not blue nd red");
+    if(k%2==1){
+      $('.10').children('.dot').css("background-color","red");
+      k++;
+    }
+    else {
+      $('.10').children('.dot').css("background-color","blue");
+      k++;
+    }
+  }
+
+
+  else if($('.4').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.4').children('.dot').css("background-color")!="rgb(255, 0, 0)"){
+   //console.log("1 not blue and red");
+   if(k%2==1){
+     $('.4').children('.dot').css("background-color","red");
+     k++;
+   }
+   else {
+     $('.4').children('.dot').css("background-color","blue");
+     k++;
+   }
+ }
+ RedWinner();
+ BlueWinner();
+})
+
+
+$('#e').click(function(){//for 5th column
+  //console.log($('.19').children('.dot').css("background-color"));
+  if($('.23').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.23').children('.dot').css('background-color')!="rgb(255, 0, 0)"){
+  //console.log("19 not red and blue,");
+    if(k%2==1){
+      $('.23').children('.dot').css("background-color","red");
+      k++;
+    }
+    else {
+      $('.23').children('.dot').css("background-color","blue");
+      k++;
+    }
+  }
+
+
+  else if($('.17').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.17').children('.dot').css("background-color")!="rgb(255, 0, 0)"){
+  //  console.log("13 not red and blue");
+    if(k%2==1){
+      $('.17').children('.dot').css("background-color","red");
+      k++;
+    }
+    else {
+      $('.17').children('.dot').css("background-color","blue");
+      k++;
+    }
+  }
+
+
+  else if($('.11').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.11').children('.dot').css("background-color")!="rgb(255, 0, 0)"){
+   //console.log("7 not blue nd red");
+    if(k%2==1){
+      $('.11').children('.dot').css("background-color","red");
+      k++;
+    }
+    else {
+      $('.11').children('.dot').css("background-color","blue");
+      k++;
+    }
+  }
+
+
+  else if($('.5').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.5').children('.dot').css("background-color")!="rgb(255, 0, 0)"){
+   //console.log("1 not blue and red");
+   if(k%2==1){
+     $('.5').children('.dot').css("background-color","red");
+     k++;
+   }
+   else {
+     $('.5').children('.dot').css("background-color","blue");
+     k++;
+   }
+ }
+ RedWinner();
+ BlueWinner();
+})
+
+
+$('#f').click(function(){//for last colun
+  //console.log($('.19').children('.dot').css("background-color"));
+  if($('.24').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.24').children('.dot').css('background-color')!="rgb(255, 0, 0)"){
+  //console.log("19 not red and blue,");
+    if(k%2==1){
+      $('.24').children('.dot').css("background-color","red");
+      k++;
+    }
+    else {
+      $('.24').children('.dot').css("background-color","blue");
+      k++;
+    }
+  }
+
+
+  else if($('.18').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.18').children('.dot').css("background-color")!="rgb(255, 0, 0)"){
+  //  console.log("13 not red and blue");
+    if(k%2==1){
+      $('.18').children('.dot').css("background-color","red");
+      k++;
+    }
+    else {
+      $('.18').children('.dot').css("background-color","blue");
+      k++;
+    }
+  }
+
+
+  else if($('.12').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.12').children('.dot').css("background-color")!="rgb(255, 0, 0)"){
+   //console.log("7 not blue nd red");
+    if(k%2==1){
+      $('.12').children('.dot').css("background-color","red");
+      k++;
+    }
+    else {
+      $('.12').children('.dot').css("background-color","blue");
+      k++;
+    }
+  }
+
+
+  else if($('.6').children('.dot').css("background-color")!="rgb(0, 0, 255)" && $('.6').children('.dot').css("background-color")!="rgb(255, 0, 0)"){
+   //console.log("1 not blue and red");
+   if(k%2==1){
+     $('.6').children('.dot').css("background-color","red");
+     k++;
+   }
+   else {
+     $('.6').children('.dot').css("background-color","blue");
+     k++;
+   }
+ }
+ RedWinner();
+ BlueWinner();
+})
+
+
+
+
+  </script>
+
+  </body>
+</html>
